@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* System Typography Configuration */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Custom Corporate Dark Theme Color Accents */
+  --color-signal-bg: #0A0A0A;
+  --color-signal-surface: rgba(18, 18, 18, 0.4);
+  --color-signal-raised: rgba(255, 255, 255, 0.02);
+  --color-signal-border: rgba(255, 255, 255, 0.06);
+  --color-signal-text: #F3F4F6;
+  --color-signal-muted: #9CA3AF;
+  --color-signal-blue: #3B7EF8;
+  --color-signal-teal: #14B8A6;
+  --color-signal-amber: #F59E0B;
+  --color-signal-red: #EF4444;
+  --color-signal-green: #10B981;
+}
+
+/* Global resets and responsive constraints */
+body {
+  background-color: #0A0A0A;
+  color: #F3F4F6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) #0A0A0A;
+}
+
+/* Custom terminal-friendly sleek scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0B0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2F3D;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B7EF8;
+}
+
+/* Shimmer Keyframe Animations for Enterprise Dashboard Loading States */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #111318 25%, #1A1E26 50%, #111318 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Custom Design Motion Keyframes & Utility Classes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(59, 126, 248, 0.25);
+    background-color: rgba(59, 126, 248, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(59, 126, 248, 0.5);
+    background-color: rgba(32, 96, 208, 0.95);
+  }
+}
+
+@keyframes radar-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+@keyframes crisis-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes step-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+.animate-radar-pulse {
+  animation: radar-pulse 4s infinite ease-in-out;
+}
+
+.animate-crisis-fade-in {
+  animation: crisis-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-step-appear {
+  opacity: 0; /* delayed items start transparent before staggered reveal */
+  animation: step-appear 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
