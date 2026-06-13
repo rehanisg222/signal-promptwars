@@ -43,7 +43,7 @@ async function startServer() {
       version: APP_VERSION,
       message: geminiConfigured
         ? "SIGNAL is configured and ready."
-        : "Gemini API key missing. Add GOOGLE_GEMINI_API_KEY to your .env file."
+        : "Gemini API key missing. Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
   });
 

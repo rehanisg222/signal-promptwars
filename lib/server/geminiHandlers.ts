@@ -19,7 +19,7 @@ function handleGeminiError(error: any, res: Response) {
     return res.status(503).json({
       success: false,
       error: "GEMINI_NOT_CONFIGURED",
-      message: "Add GOOGLE_GEMINI_API_KEY to your .env.local file to use SIGNAL."
+      message: "Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
   }
 
@@ -106,7 +106,7 @@ export async function handleAnalyze(req: Request, res: Response): Promise<void> 
     res.status(503).json({
       success: false,
       error: "GEMINI_NOT_CONFIGURED",
-      message: "Add GOOGLE_GEMINI_API_KEY to your .env.local file to use SIGNAL."
+      message: "Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
     return;
   }
@@ -307,7 +307,7 @@ export async function handleGenerateItinerary(req: Request, res: Response): Prom
     res.status(503).json({
       success: false,
       error: "GEMINI_NOT_CONFIGURED",
-      message: "Add GOOGLE_GEMINI_API_KEY to your .env.local file to use SIGNAL."
+      message: "Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
     return;
   }
@@ -451,7 +451,7 @@ export async function handleRecommend(req: Request, res: Response): Promise<void
     res.status(503).json({
       success: false,
       error: "GEMINI_NOT_CONFIGURED",
-      message: "Add GOOGLE_GEMINI_API_KEY to your .env.local file to use SIGNAL."
+      message: "Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
     return;
   }
@@ -562,7 +562,7 @@ export async function handleReplan(req: Request, res: Response): Promise<void> {
     res.status(503).json({
       success: false,
       error: "GEMINI_NOT_CONFIGURED",
-      message: "Add GOOGLE_GEMINI_API_KEY to your .env.local file to use SIGNAL."
+      message: "Add GEMINI_API_KEY to your .env file or check Settings > Secrets in AI Studio."
     });
     return;
   }

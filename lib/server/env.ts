@@ -14,10 +14,10 @@ dotenv.config();
  * Throws a descriptive Error if neither is configured.
  */
 export function getGeminiApiKey(): string {
-  const key = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_GEMINI_API_KEY;
   if (!key || key.trim() === "") {
     throw new Error(
-      "GOOGLE_GEMINI_API_KEY is not configured. Add it to your .env file. See .env.example for the required format."
+      "GEMINI_API_KEY is not configured. Add it to your .env file or check Settings > Secrets in AI Studio."
     );
   }
   return key;
@@ -27,7 +27,7 @@ export function getGeminiApiKey(): string {
  * Returns true if the Gemini API Key is configured.
  */
 export function hasGeminiApiKey(): boolean {
-  const key = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_GEMINI_API_KEY;
   return typeof key === "string" && key.trim() !== "";
 }
 

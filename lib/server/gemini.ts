@@ -5,8 +5,8 @@ import { GoogleGenAI } from "@google/genai";
 import { getGeminiApiKey } from "./env";
 
 // Centralized model name — change here only if SDK issues require it
-export const ANALYSIS_MODEL = "gemini-2.5-flash";
-export const GENERATION_MODEL = "gemini-2.5-flash";
+export const ANALYSIS_MODEL = "gemini-3.5-flash";
+export const GENERATION_MODEL = "gemini-3.5-flash";
 
 let client: GoogleGenAI | null = null;
 
