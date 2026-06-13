@@ -355,7 +355,7 @@ export default function App() {
       <div className="absolute inset-x-0 top-0 h-[600px] bg-gradient-to-b from-orange-500/[0.02] via-transparent to-transparent pointer-events-none" />
 
       {/* 1. Left Navigation Rail (80px) */}
-      <div className="w-20 flex flex-col items-center justify-between py-6 h-full border-r border-white/[0.04] bg-black/20 backdrop-blur-md shrink-0">
+      <nav aria-label="Primary Navigation" className="w-20 flex flex-col items-center justify-between py-6 h-full border-r border-white/[0.04] bg-black/20 backdrop-blur-md shrink-0">
         <div className="flex flex-col items-center w-full">
           {/* App Logo */}
           <div onClick={handleRetry} className="mt-2 flex flex-col items-center select-none cursor-pointer group">
@@ -369,47 +369,47 @@ export default function App() {
           {/* Navigation Stack */}
           <div className="mt-12 flex flex-col items-center gap-6 w-full">
             {/* Home */}
-            <button onClick={handleRetry} className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
+            <button onClick={handleRetry} aria-label="Home Workspace" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
               <Home className="size-5 stroke-[1.5]" />
             </button>
 
             {/* AI Assistant - Active */}
             <div className="group relative">
-              <button className="h-9 w-9 rounded-full bg-white flex items-center justify-center text-black shadow-lg shadow-white/20 transition-all cursor-pointer">
+              <button aria-label="AI Assistant diagnostics" className="h-9 w-9 rounded-full bg-white flex items-center justify-center text-black shadow-lg shadow-white/20 transition-all cursor-pointer">
                 <Sparkles className="size-5 stroke-[1.5]" />
               </button>
             </div>
 
             {/* Profile */}
-            <button className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
+            <button aria-label="View Profile" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
               <User className="size-5 stroke-[1.5]" />
             </button>
 
             {/* Dashboards */}
-            <button className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
+            <button aria-label="View dashboards" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
               <LayoutGrid className="size-5 stroke-[1.5]" />
             </button>
 
             {/* Reports */}
-            <button className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
+            <button aria-label="View study plans reports" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
               <ClipboardList className="size-5 stroke-[1.5]" />
             </button>
 
             {/* Settings */}
-            <button className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
+            <button aria-label="Workspace Settings" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer">
               <Settings className="size-5 stroke-[1.5]" />
             </button>
           </div>
         </div>
 
         {/* Logout/Bottom Spacer */}
-        <button className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer mb-2">
+        <button aria-label="Logout" className="h-9 w-9 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.03] transition-all cursor-pointer mb-2">
           <LogOut className="size-5 stroke-[1.5]" />
         </button>
-      </div>
+      </nav>
 
       {/* 2. Center Canvas */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden relative">
+      <main className="flex-1 flex flex-col h-full overflow-hidden relative">
         
         {/* Center Top Bar */}
         <div className="w-full flex items-center justify-between px-8 py-4 z-10 shrink-0">
@@ -610,8 +610,9 @@ export default function App() {
                       {/* Number left & City location inputs */}
                       <div className="grid grid-cols-2 gap-3">
                         <div className="flex flex-col gap-1.2 text-left">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">2. DAYS LEFT</span>
+                          <label htmlFor="days-left-input" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">2. DAYS LEFT</label>
                           <input 
+                            id="days-left-input"
                             type="number" 
                             placeholder="Days"
                             value={formData.daysToExam === null ? "" : formData.daysToExam}
@@ -620,16 +621,19 @@ export default function App() {
                               handleFormChange({ daysToExam: v });
                             }}
                             className="bg-black/30 border border-white/5 rounded-full px-3 py-1 text-center font-mono font-bold text-white focus:outline-none focus:border-white/20"
+                            aria-label="Days left to exam"
                           />
                         </div>
                         <div className="flex flex-col gap-1.2 text-left">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">3. HOME CITY</span>
+                          <label htmlFor="home-city-input" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">3. HOME CITY</label>
                           <input 
+                            id="home-city-input"
                             type="text" 
                             placeholder="Kota"
                             value={formData.city}
                             onChange={(e) => handleFormChange({ city: e.target.value })}
                             className="bg-black/30 border border-white/5 rounded-full px-3 py-1 text-center text-white focus:outline-none focus:border-white/20"
+                            aria-label="Home city region"
                           />
                         </div>
                       </div>
@@ -637,8 +641,8 @@ export default function App() {
 
                     {/* Mood selectors emoji row */}
                     <div className="flex flex-col gap-1.5 pt-3 border-t border-white/[0.04]">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono text-left">4. CHOOSE CLINICAL MOOD FACTOR</span>
-                      <div className="grid grid-cols-5 gap-2">
+                      <span id="mood-selector-label" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono text-left">4. CHOOSE CLINICAL MOOD FACTOR</span>
+                      <div role="radiogroup" aria-labelledby="mood-selector-label" className="grid grid-cols-5 gap-2">
                         {[
                           { emoji: "😞", val: "crushed" as MoodState, label: "Tired" },
                           { emoji: "😴", val: "drained" as MoodState, label: "Exhausted" },
@@ -649,10 +653,13 @@ export default function App() {
                           <button
                             key={item.val}
                             type="button"
+                            role="radio"
+                            aria-checked={formData.mood === item.val}
+                            aria-label={`Select mood factor: ${item.label}`}
                             onClick={() => handleFormChange({ mood: item.val })}
                             className={`py-2 px-1 rounded-2xl border flex flex-col items-center justify-center transition-all cursor-pointer ${formData.mood === item.val ? 'bg-orange-500/10 border-orange-500 text-white' : 'bg-black/30 border-white/5 text-zinc-500 hover:text-white'}`}
                           >
-                            <span className="text-base leading-none">{item.emoji}</span>
+                            <span className="text-base leading-none" aria-hidden="true">{item.emoji}</span>
                             <span className="text-[8px] font-bold uppercase tracking-tight mt-1 text-zinc-500 leading-none">{item.label}</span>
                           </button>
                         ))}
@@ -680,7 +687,9 @@ export default function App() {
                     </div>
 
                     {/* Promp textbox entry */}
+                    <label htmlFor="journal-text-input" className="sr-only">Describe your study day</label>
                     <input 
+                      id="journal-text-input"
                       type="text"
                       disabled={runState.startsWith("loading_")}
                       value={formData.journalText}
@@ -692,6 +701,7 @@ export default function App() {
                       }}
                       placeholder="Describe your study day... (At least 20 characters)"
                       className="flex-grow bg-transparent border-none px-4 text-xs font-sans text-zinc-200 placeholder:text-zinc-500 focus:outline-none"
+                      aria-label="Describe your study day (at least 20 characters)"
                     />
 
                     {/* Right actions send buttons */}
@@ -885,10 +895,10 @@ export default function App() {
           </div>
         )}
 
-      </div>
+      </main>
 
       {/* 3. Right Rail (320px) */}
-      <div className="w-80 h-full border-l border-white/[0.06] bg-black/40 backdrop-blur-3xl p-5 overflow-y-auto flex flex-col justify-between shrink-0 text-left">
+      <aside aria-label="Journal logs and summary sidebar" className="w-80 h-full border-l border-white/[0.06] bg-black/40 backdrop-blur-3xl p-5 overflow-y-auto flex flex-col justify-between shrink-0 text-left">
         <div className="space-y-5">
           
           {/* Section Header */}
@@ -898,11 +908,14 @@ export default function App() {
 
           {/* Quick Search Log search bar */}
           <div className="h-10 w-full rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center px-4">
-            <Search className="text-zinc-500 size-4 shrink-0" />
+            <label htmlFor="search-logs-input" className="sr-only">Search logs</label>
+            <Search className="text-zinc-500 size-4 shrink-0" aria-hidden="true" />
             <input 
+              id="search-logs-input"
               type="text" 
               placeholder="Search logs..." 
               className="bg-transparent border-none w-full px-3 text-xs text-zinc-300 focus:outline-none placeholder:text-zinc-500 font-sans"
+              aria-label="Search logs"
             />
           </div>
 
@@ -1009,7 +1022,7 @@ export default function App() {
         >
           Again Chat
         </button>
-      </div>
+      </aside>
 
     </div>
   );
