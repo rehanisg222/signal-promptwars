@@ -35,7 +35,7 @@ import {
 export default function App() {
   // Configured check status
   const [isCheckingHealth, setIsCheckingHealth] = useState<boolean>(true);
-  const [geminiConfigured, setGeminiConfigured] = useState<boolean>(false);
+  const [geminiConfigured, setGeminiConfigured] = useState<boolean>(true);
 
   // Core App states
   const [runState, setRunState] = useState<AppRunState>("idle");
@@ -69,7 +69,7 @@ export default function App() {
         }
       } catch (err) {
         console.error("Failed to connect health API:", err);
-        setGeminiConfigured(false);
+        // Do not force set to false on network error, so the app remains typable and resilient.
       } finally {
         setIsCheckingHealth(false);
       }
@@ -682,7 +682,7 @@ export default function App() {
                     {/* Promp textbox entry */}
                     <input 
                       type="text"
-                      disabled={runState.startsWith("loading_") || !geminiConfigured}
+                      disabled={runState.startsWith("loading_")}
                       value={formData.journalText}
                       onChange={(e) => handleFormChange({ journalText: e.target.value })}
                       onKeyDown={(e) => {
